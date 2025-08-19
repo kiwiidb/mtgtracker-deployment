@@ -2,10 +2,26 @@ mtgtracker:
   image:
     repository: ghcr.io/kiwiidb/mtgtracker
     tag: main-f71d483
+  env:
+    FIREBASE_CONFIG: /etc/firebase/firebase.json
+  volumes:
+    - name: firebase-config
+      secret:
+        secretName: firebase-credentials
+  volumeMounts:
+    - name: firebase-config
+      mountPath: /etc/firebase
   secrets:
     POSTGRES_DSN:
       secretName: database-credentials
       secretKey: connectionstring
-    FIREBASE_CONFIG:
-      secretName: firebase-credentials
-      secretKey: firebase.json
+  ingress:
+    enabled: true
+    hosts:
+      - host: api-staging.plowshare.social
+        paths:
+          - /
+    tls:
+      - hosts:
+          - api-staging.plowshare.social
+        secretName: letsencrypt-prod
