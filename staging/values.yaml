@@ -4,6 +4,7 @@ mtgtracker:
     tag: main-f71d483
   env:
     FIREBASE_CONFIG: /etc/firebase/firebase.json
+    GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
   volumes:
     - name: firebase-config
       secret:
