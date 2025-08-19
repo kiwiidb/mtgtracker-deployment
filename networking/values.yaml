@@ -4,3 +4,6 @@ cert-manager:
     email: kwinten.debacker@hotmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     secretName: letsencrypt-prod
+ingress-nginx:
+  controller:
+    ingressClass: ingress-nginx
