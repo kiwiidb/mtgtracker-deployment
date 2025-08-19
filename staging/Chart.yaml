@@ -1,0 +1,12 @@
+apiVersion: v2
+name: staging
+description: A Helm chart for MTG Tracker staging deployment
+type: application
+version: 0.1.0
+appVersion: "main-f71d483"
+
+dependencies:
+- name: generic-microservice
+  alias: mtgtracker
+  version: 0.1.0
+  repository: alias:charts

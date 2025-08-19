@@ -1,0 +1,8 @@
+mtgtracker:
+  image:
+    repository: ghcr.io/kiwiidb/mtgtracker
+    tag: main-f71d483
+  secrets:
+    POSTGRES_DSN:
+      secretName: database-credentials
+      secretKey: connectionstring
