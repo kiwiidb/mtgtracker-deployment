@@ -13,6 +13,7 @@ env:
   CLUSTER_NAME: mtgtracker
   NAMESPACE: networking
   CHART_NAME: networking
+  RELEASE_NAME: mtgtracker
 
 jobs:
   deploy:

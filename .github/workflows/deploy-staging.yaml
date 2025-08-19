@@ -1,4 +1,4 @@
-name: Deploy Networking Helm Chart
+name: Deploy staging Helm Chart
 
 on:
   push:
@@ -13,6 +13,7 @@ env:
   CLUSTER_NAME: mtgtracker
   NAMESPACE: staging
   CHART_NAME: staging
+  RELEASE_NAME: mtgtracker
 
 jobs:
   deploy:
