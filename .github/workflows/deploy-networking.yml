@@ -36,6 +36,6 @@ jobs:
         kubectl: 1.26.1
         helmv3: 3.10.2
         command: |
-                helmv3 repo add charts https://kiwiidb.github.io/helm-charts
-                helmv3 dep update ./$CHART_NAME
-                helmv3 upgrade --install --namespace $NAMESPACE --create-namespace --kubeconfig $GITHUB_WORKSPACE/.kubeconfig $RELEASE_NAME $CHART_NAME
+          helmv3 repo add charts https://kiwiidb.github.io/helm-charts
+          helmv3 dep update ./$CHART_NAME
+          helmv3 upgrade --install --namespace $NAMESPACE --create-namespace --kubeconfig $GITHUB_WORKSPACE/.kubeconfig $RELEASE_NAME $CHART_NAME
