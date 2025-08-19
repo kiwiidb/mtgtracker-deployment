@@ -6,3 +6,6 @@ mtgtracker:
     POSTGRES_DSN:
       secretName: database-credentials
       secretKey: connectionstring
+    FIREBASE_CONFIG:
+      secretName: firebase-credentials
+      secretKey: firebase.json
