@@ -1,1 +1,6 @@
-
+cert-manager:
+  clusterIssuer:
+    name: letsencrypt-prod
+    email: kwinten.debacker@hotmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    secretName: letsencrypt-prod
