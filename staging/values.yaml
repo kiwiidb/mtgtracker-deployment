@@ -20,7 +20,7 @@ mtgtracker:
     hosts:
       - host: api-staging.plowshare.social
         paths:
-          - /
+          - path: /
     tls:
       - hosts:
           - api-staging.plowshare.social
