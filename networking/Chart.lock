@@ -1,0 +1,9 @@
+dependencies:
+- name: ingress-nginx
+  repository: https://kiwiidb.github.io/helm-charts
+  version: 4.10.1
+- name: cert-manager
+  repository: https://kiwiidb.github.io/helm-charts
+  version: v1.14.5
+digest: sha256:7896460d9c36197c4aa31ca42873e75edb8341729b64e7b26d3f0bf5929fd479
+generated: "2025-08-19T17:16:39.49639+02:00"
