@@ -1,0 +1,41 @@
+name: Deploy Networking Helm Chart
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'staging/**'
+  workflow_dispatch:
+
+env:
+  DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+  CLUSTER_NAME: mtgtracker
+  NAMESPACE: staging
+  CHART_NAME: staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ env.CLUSTER_NAME }}
+
+    - name: Deploy networking chart
+      uses: stefanprodan/kube-tools@v1
+      with:
+        kubectl: 1.26.1
+        helmv3: 3.10.2
+        command: |
+          helmv3 repo add charts https://kiwiidb.github.io/helm-charts
+          helmv3 dep update ./$CHART_NAME
+          helmv3 upgrade --install --namespace $NAMESPACE --create-namespace --kubeconfig $GITHUB_WORKSPACE/.kubeconfig $RELEASE_NAME $CHART_NAME
