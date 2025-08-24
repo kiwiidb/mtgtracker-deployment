@@ -1,10 +1,11 @@
 mtgtracker:
   image:
     repository: ghcr.io/kiwiidb/mtgtracker
-    tag: main-f71d483
+    tag: main-82e8f2f
   env:
     FIREBASE_CONFIG: /etc/firebase/firebase.json
     GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
+    SPACES_NAME: mtgtracker
   volumes:
     - name: firebase-config
       secret:
@@ -16,6 +17,12 @@ mtgtracker:
     POSTGRES_DSN:
       secretName: database-credentials
       secretKey: connectionstring
+    SPACES_KEY:
+      secretName: spaces-credentials
+      secretKey: key
+    SPACES_SECRET:
+      secretName: spaces-credentials
+      secretKey: secret
   ingress:
     enabled: true
     annotations:
@@ -25,7 +32,7 @@ mtgtracker:
     hosts:
       - host: api-staging.plowshare.social
         paths:
-          - path: /
+          - path: /mtgtracker
             pathType: Prefix
     tls:
       - hosts:
