@@ -32,7 +32,7 @@ mtgtracker:
     hosts:
       - host: api-staging.plowshare.social
         paths:
-          - path: /mtgtracker/(.*)
+          - path: /api/(.*)
             pathType: ImplementationSpecific
     tls:
       - hosts:
