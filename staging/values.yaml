@@ -28,12 +28,12 @@ mtgtracker:
     annotations:
       kubernetes.io/ingress.class: ingress-nginx
       cert-manager.io/cluster-issuer: letsencrypt-prod
-      nginx.ingress.kubernetes.io/rewrite-target: /
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
     hosts:
       - host: api-staging.plowshare.social
         paths:
-          - path: /mtgtracker
-            pathType: Prefix
+          - path: /mtgtracker/(.*)
+            pathType: ImplementationSpecific
     tls:
       - hosts:
           - api-staging.plowshare.social
