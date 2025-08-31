@@ -3,7 +3,6 @@ mtgtracker:
     repository: ghcr.io/kiwiidb/mtgtracker
     tag: main-180e818
   env:
-    FIREBASE_CONFIG: /etc/firebase/firebase.json
     GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
     SPACES_NAME: mtgtracker
   volumes:
@@ -30,11 +29,11 @@ mtgtracker:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       nginx.ingress.kubernetes.io/rewrite-target: /$1
     hosts:
-      - host: api-staging.plowshare.social
+      - host: staging.plowshare.social
         paths:
           - path: /api/(.*)
             pathType: ImplementationSpecific
     tls:
       - hosts:
-          - api-staging.plowshare.social
+          - staging.plowshare.social
         secretName: letsencrypt-prod
