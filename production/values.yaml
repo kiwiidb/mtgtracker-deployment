@@ -4,7 +4,15 @@ mtgtracker:
     tag: main-e7c39f6
   env:
     GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
+    FIREBASE_CONFIG: /etc/firebase/firebase.json
     SPACES_NAME: mtgtracker-production
+  volumes:
+    - name: firebase-config
+      secret:
+        secretName: firebase-credentials
+  volumeMounts:
+    - name: firebase-config
+      mountPath: /etc/firebase
   secrets:
     POSTGRES_DSN:
       secretName: database-credentials
