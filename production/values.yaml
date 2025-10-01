@@ -1,0 +1,32 @@
+mtgtracker:
+  image:
+    repository: ghcr.io/kiwiidb/mtgtracker
+    tag: main-e7c39f6
+  env:
+    GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
+    SPACES_NAME: mtgtracker-production
+  secrets:
+    POSTGRES_DSN:
+      secretName: database-credentials
+      secretKey: connectionstring
+    SPACES_KEY:
+      secretName: spaces-credentials
+      secretKey: key
+    SPACES_SECRET:
+      secretName: spaces-credentials
+      secretKey: secret
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: ingress-nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+    hosts:
+      - host: production.plowshare.social
+        paths:
+          - path: /api/(.*)
+            pathType: ImplementationSpecific
+    tls:
+      - hosts:
+          - production.plowshare.social
+        secretName: letsencrypt-prod
