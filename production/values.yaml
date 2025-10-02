@@ -6,7 +6,7 @@ mtgtracker:
     GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
     FIREBASE_CONFIG: /etc/firebase/firebase.json
     SPACES_NAME: mtgtracker-production
-    SPACES_HOST: ams3.digitaloceanspaces.com
+    SPACES_HOST: https://ams3.digitaloceanspaces.com
   volumes:
     - name: firebase-config
       secret:
