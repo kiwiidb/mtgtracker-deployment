@@ -1,7 +1,7 @@
 mtgtracker:
   image:
     repository: ghcr.io/kiwiidb/mtgtracker
-    tag: main-e651c39
+    tag: main-c673981
   env:
     GOOGLE_APPLICATION_CREDENTIALS: /etc/firebase/firebase.json
     FIREBASE_CONFIG: /etc/firebase/firebase.json
